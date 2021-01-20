@@ -3,7 +3,7 @@
 int compare();
 int main()
 {
-char firststring;
+char firststring[256];
 char secondstring[]="abcdefghijklmnopqrstuvwxyz";
   for (int i=0;i<26;i++)
   {
