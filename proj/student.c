@@ -43,8 +43,8 @@ void deleteStudents()
 {
   for(int i=0;i<numStudents;i++)
   {
-  deleteStudent(students[i]);
-  students[i]=0;
+    deleteStudent(students[i]);
+    students[i]=0;
   }
   numStudents=0;
 }
@@ -77,32 +77,32 @@ void saveStudents(int key)
 
 void loadStudents(int key)
 {
+  char b1[256];
+  char b2[256];
+  char b3[256];
+  char b4[256];
   if(numStudents>0)
-    deleteStudents();
+    {deleteStudents();}
   FILE* studentread;
   studentread = fopen("studentdata.txt","r");
   if (studentread){
     while (1) {
-      char b1[256];
-      char b2[256];
-      char b3[256];
-      char b4[256];
-      int age; long id;
       if(fscanf(studentread,"%s %s %s %s",b1,b2,b3,b4)==4){
+        int age; long id;
         caesarDecrypt(b1,key);
         caesarDecrypt(b2,key);
         caesarDecrypt(b3,key);
         caesarDecrypt(b4,key);
-        sscanf(b3, "%d",&age);
-        sscanf(b4, "%ld",&id);
+        sscanf(b3, "%d", &age);
+        sscanf(b4, "%ld", &id);
         createStudent(b1,b2,age,id);
+        printf("%d Students loaded", numStudents);
         }
       else{
         break;
         }
       }
     }
-  printf("%d Students loaded", numStudents);
   fclose(studentread);
 }
 
