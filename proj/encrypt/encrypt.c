@@ -6,13 +6,35 @@
 
 #include "encrypt.h"
 
-
 char CHARS[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 int CHARS_LEN = 62;
 
 
 char shiftChar(char c, int shift, int direction)
 {
+int index;
+for(int i=0;i<CHARS_LEN;i++){
+    if(CHARS[i]==c){
+      index=i;
+    }
+}
+  if(direction==1){
+    if(index+shift>CHARS_LEN){
+    c=CHARS[(index+shift)-CHARS_LEN];
+    }
+    else{
+    c=CHARS[index+shift];
+    }
+  }
+  else if(direction==0){
+    if(index-shift<0){
+    c=CHARS[CHARS_LEN+(index-shift)];
+    }
+    else{
+    c=CHARS[index-shift];
+    }
+  }
+  return c;
   // implement the character shift here:
   //  given a char c shift it either forwards (direction == 1) or backwards (direction == 0)
   //  use the CHARS array above
