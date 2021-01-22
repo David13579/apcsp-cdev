@@ -67,7 +67,7 @@ void saveStudents(int key)
       caesarEncrypt(tmpAge,key);
       caesarEncrypt(tmpid,key);
       printf("saving: %s %s %s %s\n",st->firstName,st->lastName,tmpAge,tmpid);
-      fprintf(studentdata,"Student %d: %s %s %s %s\n",i,st->firstName,st->lastName,tmpAge,tmpid);
+      fprintf(studentdata,"%s %s %s %s\n",st->firstName,st->lastName,tmpAge,tmpid);
     }
     printf("saved %d students\n",numStudents);
     fclose(studentdata);
@@ -122,7 +122,3 @@ void printStudents()
     printStudent(students[i]);
   }
 }
-
-
-
-

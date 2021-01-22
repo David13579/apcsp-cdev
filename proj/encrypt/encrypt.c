@@ -81,5 +81,3 @@ void caesarDecrypt(char str[], int shift)
   int shifts[] = { shift };
   decrypt(str, shifts, 1);
 }
-
-
